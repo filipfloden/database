@@ -2,9 +2,13 @@ from flask import Flask, session, request, render_template, redirect, flash, g, 
 
 from db import get_db
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = "BAJS"
+import werkzeug
+from werkzeug.security import (
+    check_password_hash, generate_password_hash
+)
 
+app = Flask(__name__, static_url_path="/static")
+app.config['SECRET_KEY'] = "BAJS"
 
 @app.route("/", methods=("GET", "POST")) 
 def index():
@@ -19,7 +23,7 @@ def index():
 
 		for account in r:
 			if account[1] == username:
-				if account[2] == password:
+				if check_password_hash(account[2], password):
 					#Användaren HAR loggat in..
 					session['logged'] = True
 					return redirect(url_for('logged'))
@@ -29,12 +33,11 @@ def index():
 		return "Inga konton hittades"
 
 	session.clear()
-	return render_template('index.html')
+	return render_template('index.html', user="Harry")
 
-@app.route("/create", methods=("GET", "POST")) 
+@app.route("/register", methods=("GET", "POST")) 
 def create():
 	if request.method == "POST":
-		setID = 0
 		cusername = request.form['create_username']
 		cpassword = request.form['create_password']
 		repassword = request.form['create_re-password']
@@ -42,32 +45,29 @@ def create():
 
 		db = get_db()
 		r = db.cursor()
-		r.execute("SELECT * FROM users")
-		r = r.fetchall()
+		user_exists = r.execute("SELECT * FROM users WHERE username=%s", (cusername))
+		email_exists = r.execute("SELECT * FROM users WHERE email=%s", (email))
 
-		for account in r:
-			if account[1] == cusername:
-				return "Användarnamnet används redan"
+		if user_exists > 0:
+			return "Användarnamnet används redan"
 		
-			elif cpassword != repassword:
-				return "Lösenorden matchar inte"
+		elif cpassword != repassword:
+			return "Lösenorden matchar inte"
 
-			else:
-				r = db.cursor()
-				r.execute("INSERT INTO users (id, username, password, email) VALUES (%s, %s, %s, %s) ", (setID, cusername, repassword, email))
-				db.commit()
+		elif email_exists > 0:
+			return "Emailen används redan"
+		else:
+			r = db.cursor()
+			r.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s) ", (cusername, generate_password_hash(cpassword), email))
+			db.commit()
 
 
 	session.clear()
 	return render_template('index.html')
- 
-@app.route("/test")
-def test():
-	db = get_db()
-	r = db.cursor()
-	r.execute("SELECT * FROM users")
-	r = r.fetchall()
-	return str(r)
+
+@app.route("/login", methods=('GET', 'POST'))
+
+
 @app.route("/logged")
 def logged():
 
@@ -75,6 +75,7 @@ def logged():
 		return "Du är inloggad"
 	else:
 		return "Du är INTE inloggad"
+		
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
 	

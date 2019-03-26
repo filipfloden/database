@@ -3,20 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AdMap</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="/Flask_/static/styles/main.css">
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-  <script src="main.js">
-  
-  </script>
-
+    <title>AdMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='main.css') }}">
 </head>
 
 <body>
   <div class="mini-header">
+    <button onclick="createAccount()" id="btnCreate">Create Account</button>
     <button onclick="login()" id="btnLogin">Login</button>
     <a class="mini-header-right"> Email: mail@example.com | My account</a>
     <a class="mini-header-left"> Help | Contact | Track Annonser </a>
@@ -41,7 +35,7 @@
 
   <div id="loginBase">
     <div id="loginDesign" class="wrap-login100">
-      <form class="login100-form" action="/" method="POST">
+      <form id="loginForm" class="login100-form" action="/" method="POST">
 
         <span class="login100-form-title">
           Log in
@@ -58,7 +52,7 @@
         </div>
 
         <div class="contact100-form-checkbox">
-          <input class="input-checkbox100" id="ckb1" type="checkbox" data-placeholder="&#10003;" name="remember-me">
+          <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
           <label class="label-checkbox100" for="ckb1">
             Remember me
           </label>
@@ -68,9 +62,6 @@
           <button class="login100-form-btn" type="submit">
             Login
           </button>
-          <button class="create-account">
-              Create account
-            </button>
         </div>
 
 
@@ -78,55 +69,77 @@
           <a class="txt1" href="#">
             Forgot Password?
           </a>
+          <br>
+          <a class="txt1" href="#" onclick="createAccount()">
+            Don't have an account? Create one here
+          </a>
         </div>
-      </form>
-
-      <form action="/create" method="POST">
-        <input name="create_username" placeholder="Username">
-        <br>
-        <input type="password" name="create_password" placeholder="Password">
-        <br>
-        <input type="password" name="create_re-password" placeholder="Re-Enter Password">
-        <br>
-        <input type="email" name="email" placeholder="Email">
-        <br>
-        <input type="submit" value="Skapa Konto">
       </form>
     </div>
   </div>
 
 
+  <div id="createBase">
+    <div id="createDesign" class="wrap-login100">
+      <form id="createForm" action="/register" method="POST">
+        <span class="login100-form-title">
+          Create account
+        </span>
+  
+        <div class="wrap-input100 validate-input" data-validate = "Enter username">
+          <input class="input100" type="text" name="create_username" placeholder="Username">
+          <span class="focus-input100 far" data-placeholder="&#9786;"></span>
+        </div>
+  
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+          <input class="input100" type="password" name="create_password" placeholder="Password">
+          <span class="focus-input100" data-placeholder="&#10037;"></span>
+        </div>
+  
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+          <input class="input100" type="password" name="create_re-password" placeholder="Repeat Password">
+          <span class="focus-input100" data-placeholder="&#10037;"></span>
+        </div>
+  
+        <div class="wrap-input100 validate-input" data-validate="Enter email">
+          <input class="input100" type="email" name="email" placeholder="Email">
+          <span class="focus-input100" data-placeholder="&#9993;"></span>
+        </div>
 
-
+        <button class="create-account" type="submit">
+          Create account
+        </button>
+        <div class="text-center">
+            <a class="txt1" href="#"onclick="login()">
+              Already have an account? Log in here
+            </a>
+          </div>
+      </form>
+    </div>
+  </div>
 
 <script>
 
     var loginBase = document.getElementById('loginBase');
-    var loginDesign = document.getElementById('loginDesign');
+    var createBase = document.getElementById('createBase');
 
     function login() {
       loginBase.style.display = "block";
+      createBase.style.display = "none";
     }
-/*
-    function loginClose(){
-      loginDesign.style.animation = "fade-out 0.4s", loginBase.style.display = "none";
+
+    function createAccount(){
+      createBase.style.display = "block";
+      loginBase.style.display = "none";
     }
-*/
 
     window.onclick = function(event) {
-      if (event.target === loginBase) {
+      if (event.target === loginBase || event.target === createBase) {
         loginBase.style.display = "none";
+        createBase.style.display = "none";
       }
     }
 
-</script>
-
-
-
-
-<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-
-<script>
 </script>
 
 </body>

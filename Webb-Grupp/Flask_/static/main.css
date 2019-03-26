@@ -1,0 +1,544 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "Vintage"; 
+  box-sizing: border-box;
+}
+
+.header{
+  height: 17vh;
+  width: 100%;
+}
+.logo{
+  width: 17%;
+  height: 13vh;
+  float: left;
+  margin-top: 1%;
+	margin-left: 11%;
+}
+
+.logo-text{
+  font-size: 500%;
+  color: black;
+  float: left;
+  text-align: center;
+	font-family: "Vintage";
+}
+
+.header-bar, .header-bar1{
+  margin-top: 4%;
+  height: 4vh;
+  width: 10%;
+  text-align: center;
+  float: left;
+}
+
+.header-bar1{
+  margin-left: 33%;
+}
+
+.header-bar a, .header-bar1 a{
+  color: black;
+  font-size: 220%;
+	text-decoration: none;
+	font-family: "Vintage";
+}
+
+.header-bar a:hover, .header-bar1 a:hover{
+  color: #43618F;
+}
+
+.mini-header{
+	width: 100%;
+	height: 6vh;
+	background-color: #44B2FF;
+}
+.mini-header-right{
+  font-family: 'Helvetica';
+	margin-right: 5%;
+	margin-top: 1%;
+	color: white;
+  float: right;
+  text-decoration: none;
+}
+
+#btnLogin, #btnCreate{
+  font-family: 'Helvetica';
+  margin: 1%;
+	color: white;
+  float: right;
+  text-decoration: none;
+}
+
+.mini-header-right:hover, #btnLogin:hover, #btnCreate:hover{
+	color: #43618F;
+  float: right;
+  text-decoration: none;
+}
+
+.mini-header-left{
+	margin-left: 10%;
+	margin-top: 1%;
+	color: white;
+	float: left;
+}
+.mini-header-left, .mini-header-right{
+  font-family: "Helvetica";
+}
+
+#Container{
+	width: 85%;
+	height: 70vh;
+	background-color: #43618F;
+	float: left;
+	margin-top: 1%;
+	margin-left: 8%;
+	border-radius: 2vh;
+}
+
+#sidbar-left-locations{
+  width: 18%;
+  height: 60vh;
+	background-color: #A4AAAD;
+  border: 2vh solid #CED5D9;
+  border-radius: 2%;
+  float: left;
+  margin-left: 15%;
+  margin-top: 2%;
+}
+
+#sidbar-right-karta{
+    width: 30%;
+    height: 60vh;
+    border: 2vh solid #CED5D9;
+		background-color: #A4AAAD;
+    border-radius: 2%;
+    float: left;
+    margin-left: 14%;
+    margin-top: 2%;
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+body, html {
+	height: 100%;
+	font-family: "Helvetica", sans-serif;
+}
+
+/*---------------------------------------------*/
+a {
+	font-family: "Helvetica";
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+  color: #fff;
+}
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: "Helvetica";
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+
+/*---------------------------------------------*/
+input {
+	outline: none;
+	border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: #fff;}
+input:-moz-placeholder { color: #fff;}
+input::-moz-placeholder { color: #fff;}
+input:-ms-input-placeholder { color: #fff;}
+
+textarea::-webkit-input-placeholder { color: #fff;}
+textarea:-moz-placeholder { color: #fff;}
+textarea::-moz-placeholder { color: #fff;}
+textarea:-ms-input-placeholder { color: #fff;}
+
+label {
+  margin: 0;
+  display: block;
+}
+
+/*---------------------------------------------*/
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+iframe {
+	border: none !important;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+/* ANVÄNDS */
+
+.text-center{
+  margin: 5% 0 10% 0;
+}
+
+/* ANVÄNDS */
+.txt1 {
+  font-family: "Helvetica";
+  font-size: 13px;
+  color: #e5e5e5;
+  line-height: 1.5;
+}
+
+/* ANVÄNDS */
+#loginBase, #createBase{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* ANVÄNDS */
+.wrap-login100 {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  width: 24%;
+  height: 100%;
+  overflow: hidden;
+  padding: 55px 55px 37px 55px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  background: #9152f8;
+  background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+  background: -o-linear-gradient(top, #7579ff, #b224ef);
+  background: -moz-linear-gradient(top, #7579ff, #b224ef);
+  background: linear-gradient(top, #7579ff, #b224ef);
+
+  animation-name: fade-in;
+  animation-duration: 0.4s;
+  animation-play-state: running;
+}
+
+@keyframes fade-in {
+  from {right: -300px; opacity: 0}
+  to {right: 0; opacity: 1}
+}
+
+/*------------------------------------------------------------------
+[ Form ]*/
+/* ANVÄNDS */
+.login100-form {
+  width: 100%;
+}
+/* ANVÄNDS */
+.login100-form-title {
+  font-family: Poppins-Medium;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+
+  display: block;
+}
+
+
+/*------------------------------------------------------------------
+[ Input ]*/
+/* ANVÄNDS */
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid rgba(255,255,255,0.24);
+  margin-bottom: 30px;
+}
+/* ANVÄNDS */
+.input100 {
+  font-family: "Helvetica";
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+
+  display: block;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  padding: 0 5px 0 38px;
+}
+
+/*---------------------------------------------*/ 
+/* ANVÄNDS */
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.focus-input100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  background: #fff;
+}
+
+.focus-input100::after {
+  font-family: Material-Design-Iconic-Font;
+  font-size: 22px;
+  color: #fff;
+
+  content: attr(data-placeholder);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  padding-left: 5px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus {
+  padding-left: 5px;
+}
+
+.input100:focus + .focus-input100::after {
+  top: -22px;
+  font-size: 18px;
+}
+
+.input100:focus + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 + .focus-input100::after {
+  top: -22px;
+  font-size: 18px;
+}
+
+.has-val.input100 + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 {
+  padding-left: 5px;
+}
+
+/*==================================================================
+[ Restyle Checkbox ]*/
+/* ANVÄNDS */
+.contact100-form-checkbox {
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 35px;
+}
+/* ANVÄNDS */
+.input-checkbox100 {
+  display: none;
+}
+/* ANVÄNDS */
+.label-checkbox100 {
+  font-family: "Helvetica";
+  font-size: 13px;
+  color: #fff;
+  line-height: 1.2;
+
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+/* ANVÄNDS */
+.label-checkbox100::before {
+  font-family: Material-Design-Iconic-Font;
+  font-size: 13px;
+  color: transparent;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: #fff;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* ANVÄNDS */
+.input-checkbox100:checked + .label-checkbox100::before {
+  color: #555555;
+}
+
+
+/*------------------------------------------------------------------
+[ Button ]*/
+/* ANVÄNDS */
+.container-login100-form-btn{
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* ANVÄNDS */
+.login100-form-btn, .create-account {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 1% 1% 1% 1%;
+  padding: 0 20px;
+  min-width: 120px;
+  height: 38px;
+  border-radius: 25px;
+
+  background: #9152f8;
+  background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
+  background: -o-linear-gradient(bottom, #7579ff, #b224ef);
+  background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
+  background: linear-gradient(bottom, #7579ff, #b224ef);
+  position: relative;
+  z-index: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+/* ANVÄNDS */
+.login100-form-btn::before, .create-account::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  opacity: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+/* ANVÄNDS */
+.login100-form-btn:hover, .create-account:hover {
+  color: #fff;
+}
+/* ANVÄNDS */
+.login100-form-btn:hover:before, .create-account:hover:before {
+  opacity: 0;
+}
+
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+/* ANVÄNDS */
+@media (max-width: 576px) {
+  .wrap-login100 {
+    padding: 55px 15px 37px 15px;
+  }
+}
+/* ANVÄNDS */
+.validate-input {
+  position: relative;
+}
